@@ -1,0 +1,6 @@
+{
+  "parent": "crooked_crooks:item/handheld_crook",
+  "textures": {
+    "layer0": "crooked_crooks:item/iron_crook_long"
+  }
+}

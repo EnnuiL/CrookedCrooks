@@ -1,0 +1,9 @@
+{
+	"item.crooked_crooks.wooden_crook": "Wooden Crook",
+  "item.crooked_crooks.bone_crook": "Bone Crook",
+	"item.crooked_crooks.stone_crook": "Stone Crook",
+	"item.crooked_crooks.iron_crook": "Iron Crook",
+	"tag.crooked_crooks.crooks": "Crooks",
+  "tag.crooked_crooks.mineable_with_crook": "Mineable with Crook",
+  "effect.crooked_crooks.shepherds_touch": "Shepherd's Touch"
+}

@@ -1,0 +1,32 @@
+name: Build Mod
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Eclipse Temurin 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+          cache: 'gradle'
+      - name: Build with Gradle
+        run: gradle build
+      - name: Upload build artifacts (Fabric)
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ github.event.repository.name }}-Fabric-${{ github.sha }}
+          path: |
+            fabric/build/libs/*.jar
+            !fabric/build/libs/*-dev.jar
+      - name: Upload build artifacts (Neo)
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ github.event.repository.name }}-Neo-${{ github.sha }}
+          path: |
+            norge/build/libs/*.jar
+            !norge/build/libs/*-dev.jar

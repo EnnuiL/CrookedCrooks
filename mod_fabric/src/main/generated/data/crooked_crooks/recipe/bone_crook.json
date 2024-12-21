@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "minecraft:bone"
+  },
+  "pattern": [
+    "##",
+    " #",
+    " #"
+  ],
+  "result": {
+    "count": 1,
+    "id": "crooked_crooks:bone_crook"
+  }
+}

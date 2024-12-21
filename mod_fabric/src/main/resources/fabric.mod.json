@@ -1,0 +1,30 @@
+{
+	"schemaVersion": 1,
+	"id": "crooked_crooks",
+	"version": "${version}",
+	"name": "Crooked Crooks",
+	"description": "A mod that adds crooks.",
+	"authors": [
+		"Ennui Langeweile"
+	],
+	"contact": {
+		"homepage": "https://modrinth.com/mod/ennuis_bigger_inventories",
+		"issues": "https://github.com/EnnuiL/ennuis_bigger_inventories/issues",
+		"sources": "https://github.com/EnnuiL/ennuis_bigger_inventories"
+	},
+	"icon": "assets/crooked_crooks/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": ["io.github.ennuil.crooked_crooks.ModInit"],
+		"fabric-datagen": ["io.github.ennuil.crooked_crooks.datagen.ModDatagenInit"]
+	},
+	"mixins": [
+		"crooked_crooks.mixins.json",
+		"crooked_crooks_fabric.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.9",
+		"minecraft": "=1.21.4",
+		"fabric-api": ">=0.112.0"
+	}
+}

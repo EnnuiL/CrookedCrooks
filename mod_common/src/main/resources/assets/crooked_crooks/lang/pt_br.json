@@ -1,0 +1,9 @@
+{
+	"item.crooked_crooks.wooden_crook": "Cajado de madeira",
+  "item.crooked_crooks.bone_crook": "Cajado de osso",
+	"item.crooked_crooks.stone_crook": "Cajado de pedra",
+	"item.crooked_crooks.iron_crook": "Cajado de ferro",
+	"tag.crooked_crooks.crooks": "Cajados",
+  "tag.crooked_crooks.mineable_with_crook": "Minerável com cajado",
+  "effect.crooked_crooks.shepherds_touch": "Toque do pastor"
+}

@@ -1,0 +1,33 @@
+modLoader = "javafml"
+loaderVersion = "*"
+license = "All rights reserved"
+
+[[mixins]]
+config = "crooked_crooks.mixins.json"
+
+[[mixins]]
+config = "crooked_crooks_norge.mixins.json"
+
+[[mods]]
+modId = "crooked_crooks"
+version = "${version}"
+displayName = "Crooked Crooks"
+logoFile = "icon.png"
+authors = "Ennui Langeweile and Up"
+description = """
+A zoom mod that is powerful, lean, and pretty customizable. The zoom is yours!
+"""
+
+[[dependencies.crooked_crooks]]
+modId = "neoforge"
+type = "required"
+versionRange = "[21.4.0-beta,)"
+ordering = "NONE"
+side = "CLIENT"
+
+[[dependencies.crooked_crooks]]
+modId = "minecraft"
+type = "required"
+versionRange = "[1.21.4,1.22)"
+ordering = "NONE"
+side = "CLIENT"

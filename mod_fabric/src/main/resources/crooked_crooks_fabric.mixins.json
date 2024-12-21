@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "io.github.ennuil.crooked_crooks.mixin.fabric",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "ItemStackMixin",
+    "ServerPlayerGameModeMixin",
+    "SheepMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "io.github.ennuil.crooked_crooks.mixin.norge",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "IAttributeExtensionMixin",
+    "ServerPlayerGameModeMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
