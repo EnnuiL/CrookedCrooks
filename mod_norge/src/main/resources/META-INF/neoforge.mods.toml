@@ -15,7 +15,7 @@ displayName = "Crooked Crooks"
 logoFile = "icon.png"
 authors = "Ennui Langeweile and Up"
 description = """
-A zoom mod that is powerful, lean, and pretty customizable. The zoom is yours!
+Adds its own take on crooks. They multiply drops from leaves and grass, herd sheep and pull mobs!
 """
 
 [[dependencies.crooked_crooks]]
@@ -31,3 +31,8 @@ type = "required"
 versionRange = "[1.21.4,1.22)"
 ordering = "NONE"
 side = "CLIENT"
+
+[mc-publish]
+modrinth = "DG76dVRB"
+curseforge = "393714"
+loaders = [ "neoforge" ]
