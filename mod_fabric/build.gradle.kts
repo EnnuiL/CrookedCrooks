@@ -3,6 +3,8 @@ plugins {
 	alias(libs.plugins.fabric.loom)
 }
 
+base.archivesName = "crooked_crooks-fabric"
+
 dependencies {
 	minecraft(libs.minecraft)
 

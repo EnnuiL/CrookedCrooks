@@ -3,6 +3,8 @@ plugins {
 	alias(libs.plugins.moddevgradle)
 }
 
+base.archivesName = "crooked_crooks-neo"
+
 neoForge {
 	version = libs.versions.neoforge
 	parchment {
