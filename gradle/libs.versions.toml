@@ -10,12 +10,16 @@ neoforge = "21.4.33-beta"
 
 fabric_api = "0.112.0+1.21.4"
 
+modmenu = "13.0.0-beta.1"
+
 [libraries]
 minecraft = { module = "com.mojang:minecraft", version.ref = "minecraft" }
 parchment = { module = "org.parchmentmc.data:parchment-1.21.3", version.ref = "parchment" }
 fabric_loader = { module = "net.fabricmc:fabric-loader", version.ref = "fabric_loader" }
 
 fabric_api = { module = "net.fabricmc.fabric-api:fabric-api", version.ref = "fabric_api" }
+
+modmenu = { module = "com.terraformersmc:modmenu", version.ref = "modmenu" }
 
 # If you have multiple similar dependencies, you can declare a dependency bundle and reference it on the build script with "libs.bundles.example".
 [bundles]

@@ -5,6 +5,10 @@ plugins {
 
 base.archivesName = "crooked_crooks-fabric"
 
+repositories {
+	maven("https://maven.terraformersmc.com/releases")
+}
+
 dependencies {
 	minecraft(libs.minecraft)
 
@@ -15,6 +19,8 @@ dependencies {
 	modImplementation(libs.fabric.loader)
 
 	modImplementation(libs.fabric.api)
+
+	modImplementation(libs.modmenu)
 }
 
 loom {

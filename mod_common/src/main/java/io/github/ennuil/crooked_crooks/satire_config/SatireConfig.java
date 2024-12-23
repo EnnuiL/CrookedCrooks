@@ -1,6 +1,8 @@
 package io.github.ennuil.crooked_crooks.satire_config;
 
 import com.mojang.logging.LogUtils;
+import net.minecraft.Util;
+import net.minecraft.client.gui.screens.Screen;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 
@@ -104,7 +106,16 @@ public class SatireConfig {
 		return SatireConfig.config;
 	}
 
+	public static Path getConfigPath() {
+		return SatireConfig.configPath.get();
+	}
+
 	public static void setConfigPath(Path path) {
 		SatireConfig.configPath = () -> path;
+	}
+
+	public static Screen wrapConfigScreen(Screen screen) {
+		Util.getPlatform().openPath(SatireConfig.getConfigPath());
+		return screen;
 	}
 }

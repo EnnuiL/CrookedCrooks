@@ -9,12 +9,14 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.loading.FMLPaths;
+import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 
 @Mod(ModUtils.MOD_NAMESPACE)
 public class ModInit {
 	public ModInit(IEventBus bus, ModContainer mod) {
 		SatireConfig.setConfigPath(FMLPaths.CONFIGDIR.get().resolve("crooked_crooks"));
 		SatireConfig.init();
+		mod.registerExtensionPoint(IConfigScreenFactory.class, (mod2, screen) -> SatireConfig.wrapConfigScreen(screen));
 		ModItems.ITEMS.register(bus);
 		ModAttributes.ATTRIBUTES.register(bus);
 		ModMobEffects.MOB_EFFECTS.register(bus);

@@ -42,8 +42,8 @@ publishing {
 			maven {
 				url = uri(uploadUrl)
 				credentials {
-					System.getenv("MAVEN_UPLOAD_USERNAME")
-					System.getenv("MAVEN_UPLOAD_PASSWORD")
+					username = System.getenv("MAVEN_UPLOAD_USERNAME")
+					password = System.getenv("MAVEN_UPLOAD_PASSWORD")
 				}
 			}
 		}
