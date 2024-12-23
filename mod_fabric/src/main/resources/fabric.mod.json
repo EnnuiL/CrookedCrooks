@@ -28,15 +28,17 @@
 		"minecraft": "=1.21.4",
 		"fabric-api": ">=0.112.0"
 	},
-	"mc-publish": {
-		"modrinth": "DG76dVRB",
-		"curseforge": "393714",
-		"loaders": [
-			"fabric",
-			"quilt"
-		],
-		"dependencies": [
-			"fabric-api(required){curseforge:306612}{modrinth:P7dR8mSH}"
-		]
+	"custom": {
+		"mc-publish": {
+			"modrinth": "DG76dVRB",
+			"curseforge": "393714",
+			"loaders": [
+				"fabric",
+				"quilt"
+			],
+			"dependencies": [
+				"fabric-api(required){curseforge:306612}{modrinth:P7dR8mSH}"
+			]
+		}
 	}
 }
