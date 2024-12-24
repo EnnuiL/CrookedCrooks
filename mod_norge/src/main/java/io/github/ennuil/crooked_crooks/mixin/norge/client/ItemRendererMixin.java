@@ -12,6 +12,7 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.client.resources.model.ModelResourceLocation;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
@@ -28,19 +29,19 @@ import java.util.Map;
 @Mixin(ItemRenderer.class)
 public abstract class ItemRendererMixin {
 	@Unique
-	private static final Map<Item, ModelResourceLocation> CROOK_ITEM_TO_MODEL_ID = Map.of(
-		ModItems.WOODEN_CROOK.asItem(), ModelResourceLocation.inventory(ModUtils.id("wooden_crook")),
-		ModItems.STONE_CROOK.asItem(), ModelResourceLocation.inventory(ModUtils.id("stone_crook")),
-		ModItems.BONE_CROOK.asItem(), ModelResourceLocation.inventory(ModUtils.id("bone_crook")),
-		ModItems.IRON_CROOK.asItem(), ModelResourceLocation.inventory(ModUtils.id("iron_crook"))
+	private static final Map<ResourceKey<Item>, ModelResourceLocation> CROOK_ITEM_TO_MODEL_ID = Map.of(
+		ModItems.WOODEN_CROOK.getKey(), ModelResourceLocation.inventory(ModUtils.id("wooden_crook")),
+		ModItems.STONE_CROOK.getKey(), ModelResourceLocation.inventory(ModUtils.id("stone_crook")),
+		ModItems.BONE_CROOK.getKey(), ModelResourceLocation.inventory(ModUtils.id("bone_crook")),
+		ModItems.IRON_CROOK.getKey(), ModelResourceLocation.inventory(ModUtils.id("iron_crook"))
 	);
 
 	@Unique
-	private static final Map<Item, ModelResourceLocation> CROOK_ITEM_TO_IN_HAND_MODEL_ID = Map.of(
-		ModItems.WOODEN_CROOK.asItem(), ModelResourceLocation.inventory(ModUtils.id("wooden_crook_in_hand")),
-		ModItems.STONE_CROOK.asItem(), ModelResourceLocation.inventory(ModUtils.id("stone_crook_in_hand")),
-		ModItems.BONE_CROOK.asItem(), ModelResourceLocation.inventory(ModUtils.id("bone_crook_in_hand")),
-		ModItems.IRON_CROOK.asItem(), ModelResourceLocation.inventory(ModUtils.id("iron_crook_in_hand"))
+	private static final Map<ResourceKey<Item>, ModelResourceLocation> CROOK_ITEM_TO_IN_HAND_MODEL_ID = Map.of(
+		ModItems.WOODEN_CROOK.getKey(), ModelResourceLocation.inventory(ModUtils.id("wooden_crook_in_hand")),
+		ModItems.STONE_CROOK.getKey(), ModelResourceLocation.inventory(ModUtils.id("stone_crook_in_hand")),
+		ModItems.BONE_CROOK.getKey(), ModelResourceLocation.inventory(ModUtils.id("bone_crook_in_hand")),
+		ModItems.IRON_CROOK.getKey(), ModelResourceLocation.inventory(ModUtils.id("iron_crook_in_hand"))
 	);
 
 	@Shadow
@@ -60,7 +61,7 @@ public abstract class ItemRendererMixin {
 	)
 	private void addCrookSpecialCases(ItemStack itemStack, ItemDisplayContext displayContext, boolean leftHand, PoseStack poseStack, MultiBufferSource bufferSource, int combinedLight, int combinedOverlay, BakedModel model, CallbackInfo ci, @Local(argsOnly = true) LocalRef<BakedModel> modelRef) {
 		if (itemStack.is(ModItemTags.CROOKS)) {
-			modelRef.set(this.getItemModelShaper().getModelManager().getModel(CROOK_ITEM_TO_MODEL_ID.get(itemStack.getItem())));
+			modelRef.set(this.getItemModelShaper().getModelManager().getModel(CROOK_ITEM_TO_MODEL_ID.get(itemStack.getItemHolder().getKey())));
 		}
 	}
 
@@ -73,7 +74,7 @@ public abstract class ItemRendererMixin {
 	)
 	private BakedModel getSpecialCaseCrookModel(BakedModel original, @Local(argsOnly = true) ItemStack stack) {
 		if (stack.is(ModItemTags.CROOKS)) {
-			return this.itemModelShaper.getModelManager().getModel(CROOK_ITEM_TO_IN_HAND_MODEL_ID.get(stack.getItem()));
+			return this.itemModelShaper.getModelManager().getModel(CROOK_ITEM_TO_IN_HAND_MODEL_ID.get(stack.getItemHolder().getKey()));
 		} else {
 			return original;
 		}

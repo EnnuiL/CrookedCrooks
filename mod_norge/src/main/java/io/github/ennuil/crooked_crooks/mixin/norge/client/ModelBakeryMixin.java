@@ -1,12 +1,10 @@
 package io.github.ennuil.crooked_crooks.mixin.norge.client;
 
-import io.github.ennuil.crooked_crooks.item.ModItems;
 import io.github.ennuil.crooked_crooks.utils.ModUtils;
 import net.minecraft.client.color.block.BlockColors;
 import net.minecraft.client.resources.model.ModelBakery;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.util.profiling.ProfilerFiller;
-import net.minecraft.world.item.Item;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
@@ -14,16 +12,17 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import java.util.List;
 import java.util.Map;
 
 @Mixin(ModelBakery.class)
 public abstract class ModelBakeryMixin {
 	@Unique
-	private static final Map<Item, ModelResourceLocation> CROOK_ITEM_TO_IN_HAND_MODEL_ID = Map.of(
-		ModItems.WOODEN_CROOK.asItem(), ModelResourceLocation.inventory(ModUtils.id("wooden_crook_in_hand")),
-		ModItems.STONE_CROOK.asItem(), ModelResourceLocation.inventory(ModUtils.id("stone_crook_in_hand")),
-		ModItems.BONE_CROOK.asItem(), ModelResourceLocation.inventory(ModUtils.id("bone_crook_in_hand")),
-		ModItems.IRON_CROOK.asItem(), ModelResourceLocation.inventory(ModUtils.id("iron_crook_in_hand"))
+	private static final List<ModelResourceLocation> CROOK_ITEM_TO_IN_HAND_MODEL_ID = List.of(
+		ModelResourceLocation.inventory(ModUtils.id("wooden_crook_in_hand")),
+		ModelResourceLocation.inventory(ModUtils.id("stone_crook_in_hand")),
+		ModelResourceLocation.inventory(ModUtils.id("bone_crook_in_hand")),
+		ModelResourceLocation.inventory(ModUtils.id("iron_crook_in_hand"))
 	);
 
 	@Shadow
@@ -38,6 +37,6 @@ public abstract class ModelBakeryMixin {
 		)
 	)
 	private void loadCrookInHandModels(BlockColors blockColors, ProfilerFiller profilerFiller, Map<?, ?> modelResources, Map<?, ?> blockStateResources, CallbackInfo ci) {
-		CROOK_ITEM_TO_IN_HAND_MODEL_ID.values().forEach(this::loadSpecialItemModelAndDependencies);
+		CROOK_ITEM_TO_IN_HAND_MODEL_ID.forEach(this::loadSpecialItemModelAndDependencies);
 	}
 }
