@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.Items;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -30,5 +31,8 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
 		getOrCreateTagBuilder(ItemTags.MINING_LOOT_ENCHANTABLE)
 			.addTag(ModItemTags.CROOKS);
+
+		getOrCreateTagBuilder(ModItemTags.BONE_TOOL_MATERIALS)
+			.add(Items.BONE);
 	}
 }

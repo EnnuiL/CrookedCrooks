@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_bone": {
+    "has_bone_tool_materials": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:bone"
+            "items": "#crooked_crooks:bone_tool_materials"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_bone"
+      "has_bone_tool_materials"
     ]
   ],
   "rewards": {

@@ -39,6 +39,19 @@ loom {
 			client = true
 		}
 	}
+
+	runs {
+		named("client") {
+			client()
+			ideConfigGenerated(true)
+			runDir("run")
+		}
+
+		named("datagen") {
+			ideConfigGenerated(true)
+			runDir("build/datagen")
+		}
+	}
 }
 
 tasks.named<ProcessResources>("processResources").configure {

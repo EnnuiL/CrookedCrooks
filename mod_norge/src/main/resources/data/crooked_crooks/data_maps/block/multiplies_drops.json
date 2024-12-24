@@ -4,16 +4,16 @@
       "drop_multiplier": 3
     },
     "minecraft:short_grass": {
-      "drop_multiplier": 3
+      "drop_multiplier": 2
     },
     "minecraft:tall_grass": {
-      "drop_multiplier": 3
+      "drop_multiplier": 2
     },
     "minecraft:fern": {
-      "drop_multiplier": 3
+      "drop_multiplier": 2
     },
     "minecraft:large_fern": {
-      "drop_multiplier": 3
+      "drop_multiplier": 2
     }
   }
 }

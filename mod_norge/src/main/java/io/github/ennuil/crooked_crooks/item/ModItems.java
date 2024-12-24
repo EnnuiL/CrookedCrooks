@@ -23,7 +23,7 @@ public class ModItems {
 
 	public static final DeferredItem<CrookItem> BONE_CROOK = ITEMS.registerItem(
 		"bone_crook",
-		properties -> new CrookItem(ToolMaterial.STONE, 0, -3, 0.5F, properties),
+		properties -> new CrookItem(ModToolMaterials.BONE, 0, -3, 0.5F, properties),
 		new Item.Properties()
 	);
 
@@ -32,6 +32,4 @@ public class ModItems {
 		properties -> new CrookItem(ToolMaterial.IRON, 0, -3, 0.7F, properties),
 		new Item.Properties()
 	);
-
-	public static void init() {}
 }

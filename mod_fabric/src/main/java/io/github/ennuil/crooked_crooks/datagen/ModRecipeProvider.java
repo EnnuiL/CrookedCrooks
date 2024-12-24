@@ -1,5 +1,6 @@
 package io.github.ennuil.crooked_crooks.datagen;
 
+import io.github.ennuil.crooked_crooks.item.ModItemTags;
 import io.github.ennuil.crooked_crooks.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
@@ -23,7 +24,7 @@ public class ModRecipeProvider extends RecipeProvider {
 	@Override
 	public void buildRecipes() {
 		crook(ModItems.WOODEN_CROOK, Items.STICK);
-		crook(ModItems.BONE_CROOK, Items.BONE);
+		crook(ModItems.BONE_CROOK, ModItemTags.BONE_TOOL_MATERIALS);
 		crook(ModItems.STONE_CROOK, ItemTags.STONE_TOOL_MATERIALS);
 		crook(ModItems.IRON_CROOK, ItemTags.IRON_TOOL_MATERIALS);
 	}

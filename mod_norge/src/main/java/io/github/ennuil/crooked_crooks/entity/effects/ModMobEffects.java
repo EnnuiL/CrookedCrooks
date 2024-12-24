@@ -16,6 +16,4 @@ public class ModMobEffects {
 		"shepherds_touch",
 		() -> new ShepherdMobEffect(MobEffectCategory.BENEFICIAL, CommonColors.WHITE)
 	);
-
-	public static void init() {}
 }

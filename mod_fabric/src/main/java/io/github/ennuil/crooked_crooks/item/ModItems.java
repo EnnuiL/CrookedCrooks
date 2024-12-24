@@ -19,7 +19,7 @@ public class ModItems {
 
 	public static final Item BONE_CROOK = RegistryUtils.registerItem(
 		"bone_crook",
-		properties -> new CrookItem(ToolMaterial.STONE, 0, -3, 0.5F, properties),
+		properties -> new CrookItem(ModToolMaterials.BONE, 0, -3, 0.5F, properties),
 		new Item.Properties()
 	);
 
