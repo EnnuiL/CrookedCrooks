@@ -1,32 +1,34 @@
 package io.github.ennuil.crooked_crooks.item;
 
-import io.github.ennuil.crooked_crooks.utils.RegistryUtils;
+import io.github.ennuil.crooked_crooks.utils.ModUtils;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ToolMaterial;
+import net.minecraft.world.item.Tiers;
 
 public class ModItems {
-	public static final Item WOODEN_CROOK = RegistryUtils.registerItem(
-		"wooden_crook",
-		properties -> new CrookItem(ToolMaterial.WOOD, 0, -3, 0.4F, properties),
-		new Item.Properties()
+	public static final Item WOODEN_CROOK = Registry.register(
+		BuiltInRegistries.ITEM,
+		ModUtils.id("wooden_crook"),
+		new CrookItem(Tiers.WOOD, 0, -3, 0.4F, new Item.Properties())
 	);
 
-	public static final Item STONE_CROOK = RegistryUtils.registerItem(
-		"stone_crook",
-		properties -> new CrookItem(ToolMaterial.STONE, 0, -3, 0.4F, properties),
-		new Item.Properties()
+	public static final Item STONE_CROOK = Registry.register(
+		BuiltInRegistries.ITEM,
+		ModUtils.id("stone_crook"),
+		new CrookItem(Tiers.STONE, 0, -3, 0.4F, new Item.Properties())
 	);
 
-	public static final Item BONE_CROOK = RegistryUtils.registerItem(
-		"bone_crook",
-		properties -> new CrookItem(ModToolMaterials.BONE, 0, -3, 0.5F, properties),
-		new Item.Properties()
+	public static final Item BONE_CROOK = Registry.register(
+		BuiltInRegistries.ITEM,
+		ModUtils.id("bone_crook"),
+		new CrookItem(ModTiers.BONE, 0, -3, 0.4F, new Item.Properties())
 	);
 
-	public static final Item IRON_CROOK = RegistryUtils.registerItem(
-		"iron_crook",
-		properties -> new CrookItem(ToolMaterial.IRON, 0, -3, 0.7F, properties),
-		new Item.Properties()
+	public static final Item IRON_CROOK = Registry.register(
+		BuiltInRegistries.ITEM,
+		ModUtils.id("iron_crook"),
+		new CrookItem(Tiers.IRON, 0, -3, 0.4F, new Item.Properties())
 	);
 
 	public static void init() {}

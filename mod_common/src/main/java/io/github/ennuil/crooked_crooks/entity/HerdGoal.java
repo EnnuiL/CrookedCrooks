@@ -20,7 +20,7 @@ public class HerdGoal extends Goal {
 		this.mob = mob;
 		this.speedModifier = speedModifier;
 		this.setFlags(EnumSet.of(Flag.MOVE, Flag.LOOK));
-		this.targetingConditions = HERD_TARGETTING.copy().selector(((entity, level) -> this.shouldFollow(entity)));
+		this.targetingConditions = HERD_TARGETTING.copy().selector((this::shouldFollow));
 	}
 
 	private boolean shouldFollow(LivingEntity entity) {
@@ -29,7 +29,7 @@ public class HerdGoal extends Goal {
 
 	@Override
 	public boolean canUse() {
-		this.player = getServerLevel(this.mob).getNearestPlayer(this.targetingConditions.range(this.mob.getAttributeValue(Portals.getHerdingRange())), this.mob);
+		this.player = this.mob.level().getNearestPlayer(this.targetingConditions.range(this.mob.getAttributeValue(Portals.getHerdingRange())), this.mob);
 		return this.player != null;
 	}
 

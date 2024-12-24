@@ -8,7 +8,7 @@ public class ModDatagenInit implements DataGeneratorEntrypoint {
 	public void onInitializeDataGenerator(FabricDataGenerator generator) {
 		var pack = generator.createPack();
 		pack.addProvider(ModModelProvider::new);
-		pack.addProvider(ModRecipeProvider.ModRecipeProviderRunner::new);
+		pack.addProvider(ModRecipeProvider::new);
 		pack.addProvider(ModBlockTagProvider::new);
 		pack.addProvider(ModItemTagProvider::new);
 	}

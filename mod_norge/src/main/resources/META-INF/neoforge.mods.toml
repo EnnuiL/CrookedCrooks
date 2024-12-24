@@ -21,14 +21,14 @@ Adds its own take on crooks. They multiply drops from leaves and grass, herd she
 [[dependencies.crooked_crooks]]
 modId = "neoforge"
 type = "required"
-versionRange = "[21.4.0-beta,)"
+versionRange = "[21.1.0,)"
 ordering = "NONE"
 side = "CLIENT"
 
 [[dependencies.crooked_crooks]]
 modId = "minecraft"
 type = "required"
-versionRange = "[1.21.4,1.22)"
+versionRange = "[1.21.1,1.21.2)"
 ordering = "NONE"
 side = "CLIENT"
 

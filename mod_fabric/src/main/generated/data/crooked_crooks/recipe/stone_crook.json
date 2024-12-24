@@ -2,7 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "#": "#minecraft:stone_tool_materials"
+    "#": {
+      "tag": "minecraft:stone_tool_materials"
+    }
   },
   "pattern": [
     "##",

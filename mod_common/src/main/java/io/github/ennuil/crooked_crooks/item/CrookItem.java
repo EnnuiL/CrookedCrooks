@@ -21,39 +21,35 @@ import net.minecraft.world.entity.animal.Sheep;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ToolMaterial;
+import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.TieredItem;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.item.component.Tool;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class CrookItem extends Item {
+public class CrookItem extends TieredItem {
 	public static final ResourceLocation BASE_BLOCK_REACH = ResourceLocation.withDefaultNamespace("base_block_reach");
 	public static final ResourceLocation BASE_ENTITY_REACH = ResourceLocation.withDefaultNamespace("base_entity_reach");
 
 	private final float crookStrength;
 
-	public CrookItem(ToolMaterial material, float attackDamage, float attackSpeed, float crookStrength, Properties properties) {
-		super(applyProperties(properties, ModBlockTags.MINEABLE_WITH_CROOK, attackDamage, attackSpeed, material));
+	public CrookItem(Tier tier, float attackDamage, float attackSpeed, float crookStrength, Properties properties) {
+		super(tier, applyProperties(properties, ModBlockTags.MINEABLE_WITH_CROOK, attackDamage, attackSpeed, tier));
 		this.crookStrength = crookStrength;
 	}
 
-	public static Item.Properties applyProperties(Item.Properties properties, TagKey<Block> mineableBlocks, float attackDamage, float attackSpeed, ToolMaterial material) {
-		var holderGetter = BuiltInRegistries.acquireBootstrapRegistrationLookup(BuiltInRegistries.BLOCK);
-		return properties.durability(material.durability())
-			.repairable(material.repairItems())
-			.enchantable(material.enchantmentValue())
-			.component(DataComponents.TOOL,
+	public static Item.Properties applyProperties(Item.Properties properties, TagKey<Block> mineableBlocks, float attackDamage, float attackSpeed, Tier tier) {
+		return properties.component(DataComponents.TOOL,
 				new Tool(List.of(
-					Tool.Rule.deniesDrops(holderGetter.getOrThrow(material.incorrectBlocksForDrops())),
-					Tool.Rule.minesAndDrops(holderGetter.getOrThrow(mineableBlocks), material.speed())
+					Tool.Rule.deniesDrops(tier.getIncorrectBlocksForDrops()),
+					Tool.Rule.minesAndDrops(mineableBlocks, tier.getSpeed())
 				), 1.0F, 1))
-			.attributes(createAttributes(attackDamage + material.attackDamageBonus(), attackSpeed));
+			.attributes(createAttributes(attackDamage + tier.getAttackDamageBonus(), attackSpeed));
 	}
 
 	public static ItemAttributeModifiers createAttributes(float attackDamage, float attackSpeed) {
@@ -77,7 +73,8 @@ public class CrookItem extends Item {
 
 	@Override
 	public @NotNull InteractionResult interactLivingEntity(ItemStack stack, Player player, LivingEntity interactionTarget, InteractionHand usedHand) {
-		if (!player.getCooldowns().isOnCooldown(stack)) {
+		var item = stack.getItem();
+		if (!player.getCooldowns().isOnCooldown(item)) {
 			float mobWeight = interactionTarget.getBbWidth() * interactionTarget.getBbHeight();
 			float actualWeight = 1.0F / (Math.max(mobWeight, 0.2F) / this.crookStrength);
 
@@ -98,7 +95,7 @@ public class CrookItem extends Item {
 
 			stack.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
 			player.awardStat(Stats.ITEM_USED.get(this));
-			player.getCooldowns().addCooldown(stack, 6);
+			player.getCooldowns().addCooldown(item, 6);
 
 			return InteractionResult.SUCCESS;
 		}

@@ -2,13 +2,11 @@ package io.github.ennuil.crooked_crooks.datagen;
 
 import io.github.ennuil.crooked_crooks.item.ModItems;
 import io.github.ennuil.crooked_crooks.utils.ModUtils;
-import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
-import net.minecraft.client.data.models.BlockModelGenerators;
-import net.minecraft.client.data.models.ItemModelGenerators;
-import net.minecraft.client.data.models.model.ItemModelUtils;
-import net.minecraft.client.data.models.model.ModelTemplate;
-import net.minecraft.client.data.models.model.TextureSlot;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
+import net.minecraft.data.models.BlockModelGenerators;
+import net.minecraft.data.models.ItemModelGenerators;
+import net.minecraft.data.models.model.*;
 import net.minecraft.world.item.Item;
 
 import java.util.Optional;
@@ -27,18 +25,21 @@ public class ModModelProvider extends FabricModelProvider {
 
 	@Override
 	public void generateItemModels(ItemModelGenerators generators) {
-		generateCrook(generators, ModItems.WOODEN_CROOK);
-		generateCrook(generators, ModItems.BONE_CROOK);
-		generateCrook(generators, ModItems.STONE_CROOK);
-		generateCrook(generators, ModItems.IRON_CROOK);
+		generators.generateFlatItem(ModItems.WOODEN_CROOK, ModelTemplates.FLAT_HANDHELD_ITEM);
+		generators.generateFlatItem(ModItems.BONE_CROOK, ModelTemplates.FLAT_HANDHELD_ITEM);
+		generators.generateFlatItem(ModItems.STONE_CROOK, ModelTemplates.FLAT_HANDHELD_ITEM);
+		generators.generateFlatItem(ModItems.IRON_CROOK, ModelTemplates.FLAT_HANDHELD_ITEM);
+		generateLargeCrook(generators, ModItems.WOODEN_CROOK);
+		generateLargeCrook(generators, ModItems.BONE_CROOK);
+		generateLargeCrook(generators, ModItems.STONE_CROOK);
+		generateLargeCrook(generators, ModItems.IRON_CROOK);
 	}
 
-	public final void generateCrook(ItemModelGenerators generators, Item item) {
-		var unbaked = ItemModelUtils.plainModel(generators.createFlatItemModel(item, FLAT_HANDHELD_CROOK_ITEM));
-		var unbaked2 = ItemModelUtils.plainModel(
-			generators.createFlatItemModel(item, "_long", FLAT_HANDHELD_CROOK_ITEM)
+	public final void generateLargeCrook(ItemModelGenerators generators, Item item) {
+		FLAT_HANDHELD_CROOK_ITEM.create(
+			ModelLocationUtils.getModelLocation(item).withSuffix("_in_hand"),
+			TextureMapping.layer0(TextureMapping.getItemTexture(item).withSuffix("_long")),
+			generators.output
 		);
-		var conditionalUnbaked = ItemModelUtils.conditional(ItemModelUtils.isUsingItem(), unbaked, unbaked2);
-		generators.itemModelOutput.accept(item, ItemModelGenerators.createFlatModelDispatch(unbaked, conditionalUnbaked));
 	}
 }

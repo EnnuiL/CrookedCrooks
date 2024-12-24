@@ -1,5 +1,5 @@
 {
-  "parent": "crooked_crooks:item/handheld_crook",
+  "parent": "minecraft:item/handheld",
   "textures": {
     "layer0": "crooked_crooks:item/bone_crook"
   }

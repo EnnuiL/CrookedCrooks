@@ -1,20 +1,20 @@
 # The latest versions are available at https://quiltmc.org/en/usage/latest-versions/
 [versions]
-minecraft = "1.21.4"
-parchment = "2024.12.22"
+minecraft = "1.21.1"
+parchment = "2024.11.17"
 
 fabric_loom = "1.9.2"
 fabric_loader = "0.16.9"
-moddevgradle = "2.0.59-beta"
-neoforge = "21.4.33-beta"
+moddevgradle = "2.0.62-beta"
+neoforge = "21.1.90"
 
-fabric_api = "0.112.0+1.21.4"
+fabric_api = "0.110.0+1.21.1"
 
-modmenu = "13.0.0-beta.1"
+modmenu = "11.0.3"
 
 [libraries]
 minecraft = { module = "com.mojang:minecraft", version.ref = "minecraft" }
-parchment = { module = "org.parchmentmc.data:parchment-1.21.4", version.ref = "parchment" }
+parchment = { module = "org.parchmentmc.data:parchment-1.21.1", version.ref = "parchment" }
 fabric_loader = { module = "net.fabricmc:fabric-loader", version.ref = "fabric_loader" }
 
 fabric_api = { module = "net.fabricmc.fabric-api:fabric-api", version.ref = "fabric_api" }

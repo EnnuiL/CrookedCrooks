@@ -3,6 +3,10 @@
   "minVersion": "0.8",
   "package": "io.github.ennuil.crooked_crooks.mixin.norge",
   "compatibilityLevel": "JAVA_21",
+  "client": [
+    "client.ItemRendererMixin",
+    "client.ModelBakeryMixin"
+  ],
   "mixins": [
     "IAttributeExtensionMixin",
     "ServerPlayerGameModeMixin"
